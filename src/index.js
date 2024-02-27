@@ -1,17 +1,35 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { NavBar } from './navbar';
+import { Home } from './home';
+import { CreateAccount } from './createaccount';
+import { Login } from './login';
+import { Deposit } from './deposit';
+import { Withdraw } from './withdraw';
+import { AllData } from './alldata';
+import { Balance } from './balance';
+import { UserProvider } from './usercontext'; // Import UserProvider from usercontext.js
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function Spa() {
+  const defaultUser = { users: [] }; // Initialize an empty array for users
+  return (
+    <Router>
+      <NavBar />
+      <UserProvider value={defaultUser}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createaccount/" element={<CreateAccount />} />
+          <Route path="/login/" element={<Login />} />
+          <Route path="/deposit/" element={<Deposit />} />
+          <Route path="/withdraw/" element={<Withdraw />} />
+          <Route path="/alldata/" element={<AllData />} />
+          <Route path="/balance/" element={<Balance />} />
+          <Route path="/usercontext/" element={<Balance />} />
+        </Routes>
+      </UserProvider>
+    </Router>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Spa />, document.getElementById('root'));
