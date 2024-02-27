@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/bad-bank/static/js/main.96b5211f.js",
+    "index.html": "/bad-bank/index.html",
+    "main.96b5211f.js.map": "/bad-bank/static/js/main.96b5211f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.96b5211f.js"
+  ]
+}
